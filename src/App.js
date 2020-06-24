@@ -3,17 +3,18 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state={
-      meaningOfLife: 47
+      meaningOfLife: 47 + this.props.increment
     }
+    this.props = props
   }
-handleClick = () => {
-  this.setState((prevState, prevProps) => {
-    return { meaningOfLife: prevState.meaningOfLife + 1}
-  })
-}
+  handleClick = () => {
+    this.setState((prevState, prevProps) => {
+      return { meaningOfLife: prevState.meaningOfLife + prevProps.increment}
+    })
+  }
   render () {
     return (
       <div>
@@ -30,22 +31,3 @@ handleClick = () => {
 
 export default App
 
-
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <button >
-//           Update State
-//         </button>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
